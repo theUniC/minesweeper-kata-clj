@@ -29,14 +29,14 @@
 
 (defn determine-mines-proximity-of
   [coordinates grid]
-  (let [deltas [[0 1]
-                [0 -1]
-                [-1 0]
-                [1 0]
-                [1 1]
-                [-1 1]
+  (let [deltas [[0   1]
+                [0  -1]
+                [-1  0]
+                [1   0]
+                [1   1]
+                [-1  1]
                 [-1 -1]
-                [1 -1]]
+                [1  -1]]
         proximity-of' (partial proximity-of coordinates grid)]
     (reduce #(+ %1 (proximity-of' %2)) 0 deltas)))
 
@@ -58,8 +58,7 @@
         row))
     grid))
 
-(def
-  solve
+(def solve
   (let [join-lines (partial str/join "\n")
         join-cells (partial map #(str/join %1))]
     (comp

@@ -1,36 +1,44 @@
-# minesweeper
+# Minesweeper Kata
 
-FIXME: description
+Have you ever played Minesweeper? It's a cute little game which comes within a certain Operating System whose name we 
+can't really remember. Well, the goal of the game is to find all the mines within an MxN field. To help you, the game 
+shows a number in a square which tells you how many mines there are adjacent to that square. For instance, take the 
+following 4x4 field with 2 mines (which are represented by an * character):
+
+    *...
+    ....
+    .*..
+    ....
+
+The same field including the hint numbers described above would look like this:
+
+    *100
+    2210
+    1*10
+    1110
+    
+You should write a program that takes input as follows: The input will consist of an arbitrary number of fields. The 
+first line of each field contains two integers n and m (0 < n,m <= 100) which stands for the number of lines and columns 
+of the field respectively. The next n lines contains exactly m characters and represent the field. Each safe square is 
+represented by an "." character (without the quotes) and each mine square is represented by an "*" character (also 
+without the quotes). The first field line where n = m = 0 represents the end of input and should not be processed.
+
+Your program should produce output as follows: For each field, you must print the following message in a line alone:
+
+    Field #x:
+
+Where x stands for the number of the field (starting from 1). The next n lines should contain the field with the "." 
+characters replaced by the number of adjacent mines to that square. There must be an empty line between field outputs.
 
 ## Installation
 
-Download from http://example.com/FIXME.
+    > git clone https://github.com/theUniC/minesweeper-kata-clj minesweeper-kata-clj/ && cd $_
 
 ## Usage
 
-FIXME: explanation
+    > lein uberjar
+    > java -jar target/uberjar/minesweeper-0.1.0-standalone.jar < input.txt
 
-    $ java -jar minesweeper-0.1.0-standalone.jar [args]
+## Test
 
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
-
-## License
-
-Copyright © 2016 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+    > lein spec
