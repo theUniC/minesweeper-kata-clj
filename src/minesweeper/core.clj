@@ -18,9 +18,9 @@
               (str/reverse (first rows))))))
 
 (defn- proximity-of
-  [coordinates grid [offset-y offset-x]]
+  [[y x] grid [offset-y offset-x]]
   (cond
-    (= "*" (get-in grid [(+ (get-in coordinates [0]) offset-y) (+ (get-in coordinates [1]) offset-x)])) 1
+    (= "*" (get-in grid [(+ y offset-y) (+ x offset-x)])) 1
     :else 0))
 
 (defn parse-field
@@ -58,13 +58,12 @@
         row))
     grid))
 
-(defn solve
-  [field]
+(def
+  solve
   (let [join-lines (partial str/join "\n")
         join-cells (partial map #(str/join %1))]
-    ((comp
-       join-lines
-       join-cells
-       resolve-points
-       parse-field)
-      field)))
+    (comp
+      join-lines
+      join-cells
+      resolve-points
+      parse-field)))
